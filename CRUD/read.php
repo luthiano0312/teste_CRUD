@@ -27,7 +27,7 @@
 
             while ($rows = $stmt->fetch(PDO::FETCH_OBJ)) { ?>
                 <tr>
-                    <td><?php echo $rows->ID; ?></td>
+                    <td><?php echo $rows->id; ?></td>
                     <td><?php echo $rows->name; ?></td>
                     <td><?php echo $rows->cpf; ?></td>
                 </tr>

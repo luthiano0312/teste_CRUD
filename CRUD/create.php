@@ -11,11 +11,12 @@
 
         $name = $_POST["name"];
         $cpf = $_POST["cpf"];
-        
+        $hash = password_hash($cpf, PASSWORD_DEFAULT);
+
         $stmt = $conn->prepare("INSERT INTO CLIENTES (name, cpf) VALUES (:name, :cpf)");
 
         $stmt->bindValue(":name", $name);
-        $stmt->bindValue(":cpf", $cpf);
+        $stmt->bindValue(":cpf", $hash);
 
         if($stmt->execute()) {
             echo "dados cadastrados";

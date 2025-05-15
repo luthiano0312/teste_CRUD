@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require 'connection.php';
 
     $name = $_POST['name'] ?? '';
@@ -11,14 +12,17 @@
     }
 
     $stmt = $conn->prepare("SELECT * FROM CLIENTES WHERE NAME = :name");
+
     $stmt->bindValue(":name", $name);
     $stmt->execute();
     $user = $stmt->fetch();
-    // var_dump($user);
-    // var_dump($_POST);
-    if (password_verify($user["cpf"], $cpf)) {
-        echo "sim";
-    }else {
-        echo "não";
+    
+    
+    if ($user && password_verify($cpf, $user["cpf"])) {
+        $_SESSION['user_id'] = $user["id"];
+        header('Location: protect.php');
+        exit;
+    } else {
+        echo "senha errada";
     }
 ?>

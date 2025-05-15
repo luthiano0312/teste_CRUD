@@ -1,12 +1,3 @@
-<?php
-    session_start();
-
-    if (!empty($_SESSION['user_id'])) {
-        header('Location: dashboard.php');
-        exit;
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +12,16 @@
         <input type="text" name="name" id="name">
         <br>
         <label for="cpf">cpf: </label>
-        <input type="number" name="cpf" id="cpf">
+        <input type="text" name="cpf" id="cpf">
         <br>
         <input type="submit">
+        <?php
+            session_start();
+            if (!empty($_SESSION["error"])) {
+                echo $_SESSION["error"];
+            }
+            session_destroy();
+        ?>
     </form>
 </body>
 </html>
