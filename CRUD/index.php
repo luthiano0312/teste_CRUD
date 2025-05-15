@@ -58,5 +58,15 @@
         <br>
         <input type="submit" value="excluir">
     </form>
+
+    <hr>
+
+    <form action="login.php" method="post">
+        <label for="login">login: </label>
+        <input type="submit" id="login" value="entrar">
+    </form>
+    <?php
+
+    ?>
 </body>
 </html>
